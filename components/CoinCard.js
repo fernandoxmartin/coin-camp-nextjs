@@ -1,4 +1,4 @@
-import { Sparkline } from "./Sparkline"
+import { Sparkline_7d } from "./Sparkline"
 
 export const CoinCard = ({coin}) => {
   return (
@@ -12,7 +12,7 @@ export const CoinCard = ({coin}) => {
           </div>
       </div>
       <div>
-        <Sparkline data={coin.sparkline_in_7d} status={coin.priceChangePerc_7d}/>
+        <Sparkline_7d data={coin.sparkline_in_7d} status={coin.priceChangePerc_7d}/>
       </div>
       <div className='col-span-2 flex items-end justify-between'>
         <div className='text-2xl'>${coin.current_price}</div>

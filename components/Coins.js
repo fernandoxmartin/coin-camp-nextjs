@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Sparkline } from './Sparkline'
+import { Sparkline_7d } from './Sparkline'
 var abbreviate = require('number-abbreviate');
 
 const Coins = ({
@@ -36,7 +36,7 @@ const Coins = ({
           <div className='uppercase'>{abbreviate(volume, 2)}</div>
           <div className='uppercase'>{abbreviate(marketcap, 2)}</div>
           <div className='w-full h-full col-span-2'>
-            <Sparkline data={sparkline} status={priceChangePerc_7d}/>
+            <Sparkline_7d data={sparkline} status={priceChangePerc_7d}/>
           </div>
         </div>
       </a>

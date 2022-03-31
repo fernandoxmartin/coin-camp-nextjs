@@ -1,78 +1,39 @@
-import Layout from "../../components/Layout";
-import styled from "styled-components";
 
-const Crypto = ({ crypto }) => {
-  console.log(crypto);
+import Layout from "../../components/Layout";
+import { Sparkline_24h } from "../../components/Sparkline";
+
+const Coin = ({ coin }) => {
+
+  const data_24h = (coin.market_data.sparkline_7d.price).slice(-24);
+
   return (
     <Layout>
-      <CryptoPage>
-        <Row col={2} row={1}>
-          <CryptoImg src={crypto.image.large} alt={crypto.name} />
-          <CryptoData>
-            <DataContainer>
-              <h1>{crypto.name}</h1>
-              <p>{crypto.symbol}</p>
-            </DataContainer>
-            <DataContainer
-              percent={crypto.market_data.price_change_percentage_24h}
-            >
-              <h2>${crypto.market_data.current_price.usd.toLocaleString()}</h2>
-              <p>
-                {crypto.market_data.price_change_percentage_24h.toFixed(1)}%
-              </p>
-            </DataContainer>
-          </CryptoData>
-        </Row>
-        <Row col={3} row={2}>
-          <p>1h</p>
-          <p>24h</p>
-          <p>7d</p>
-          <Data
-            percentage={
-              crypto.market_data.price_change_percentage_1h_in_currency.usd
-            }
-          >
-            {crypto.market_data.price_change_percentage_1h_in_currency.usd.toFixed(
-              1
-            )}
-            %
-          </Data>
-          <Data
-            percentage={
-              crypto.market_data.price_change_percentage_24h_in_currency.usd
-            }
-          >
-            {crypto.market_data.price_change_percentage_24h_in_currency.usd.toFixed(
-              1
-            )}
-            %
-          </Data>
-          <Data
-            percentage={
-              crypto.market_data.price_change_percentage_7d_in_currency.usd
-            }
-          >
-            {crypto.market_data.price_change_percentage_7d_in_currency.usd.toFixed(
-              1
-            )}
-            %
-          </Data>
-        </Row>
-        <Row col={2} row={2}>
-          <p>24h Volume</p>
-          <p>Market Cap</p>
-          <Data>${crypto.market_data.total_volume.usd.toLocaleString()}</Data>
-          <Data>${crypto.market_data.market_cap.usd.toLocaleString()}</Data>
-        </Row>
-        <Row col={1} row={2}>
-          
-        </Row>
-      </CryptoPage>
+      <div className='w-full flex items-center py-4 uppercase'>
+        <img src={coin.image.small}/>
+        <h2 className='text-2xl px-4'>{coin.name}</h2>
+        <p className='text-sm text-gray-400'>{coin.symbol}</p>
+      </div>
+      <div className='w-full h-full grid grid-cols-3 grid-rows-2 gap-4 '>
+        <div className='bg-[#303030] rounded-2xl col-span-2 p-8'>
+          <div>
+            <h2 className='text-3xl'>${coin.market_data.current_price.usd}</h2>
+            <div className='flex items-center'>
+              <p className='pr-4'>{coin.market_data.price_change_percentage_24h.toFixed(2)}%</p>
+              <p className='text-xs text-gray-400'>(24h)</p>
+            </div>
+          </div>
+          <div>
+          <Sparkline_24h data={data_24h} status={coin.market_data.price_change_percentage_24h}/>
+          </div>
+        </div>
+        <div className='bg-[#303030] rounded-2xl'></div>
+        <div className='bg-[#303030] rounded-2xl col-span-3'></div>
+      </div>
     </Layout>
   );
 };
 
-export default Crypto;
+export default Coin;
 
 export async function getServerSideProps(context) {
   const { id } = context.query;
@@ -84,68 +45,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      crypto: data,
+      coin: data,
     },
   };
 }
-
-const CryptoPage = styled.div`
-  display: grid;
-  grid-template-rows: 2fr, 1fr, 1fr, 1fr;
-  align-items: center;
-  justify-content: center;
-  width: 90%;
-  height: 100%;
-  max-width: 900px;
-`;
-
-const CryptoImg = styled.img`
-  width: 80%;
-`;
-const Row = styled.div`
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(${(props) => props.col}, 1fr);
-  grid-template-rows: repeat(${(props) => props.row}, 1fr);
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 2.5rem;
-  p {
-    justify-self: center;
-    margin-bottom: 1rem;
-  }
-`;
-const CryptoData = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: space-around;
-`;
-const DataContainer = styled.div`
-  text-align: end;
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 1px;
-    font-weight: 500;
-  }
-  h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1px;
-    font-weight: 500;
-  }
-  p {
-    font-size: 1rem;
-    text-transform: uppercase;
-    color: #777;
-    color: ${(props) =>
-      props.percent < 0 ? "#e8503a" : props.percent > 0 ? "#18BF65" : "#777"};
-  }
-`;
-const Data = styled.p`
-  color: ${(props) =>
-    props.percentage < 0
-      ? "#e8503a"
-      : props.percentage > 0
-      ? "#18BF65"
-      : "#777"};
-`;
