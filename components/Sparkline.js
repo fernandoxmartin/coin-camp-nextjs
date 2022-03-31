@@ -16,7 +16,7 @@ ChartJS.register(CategoryScale,
     Tooltip,
     Legend);
 
-export const Sparkline = ({data, status}) => {
+export const Sparkline = ({data, status, w, h}) => {
 
     const dataPrices = data.price;
 

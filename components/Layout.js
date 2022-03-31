@@ -10,10 +10,10 @@ const Layout = ({ children, title = "Coin Camp" }) => {
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header className='max-w-5xl w-full flex justify-center'>
+      <header className='w-full flex justify-center'>
         <Header/>
       </header>
-      <main className='max-w-5xl w-full h-full flex flex-col items-center justify-center bg-[#242426] rounded-3xl p-4'>{children}</main>
+      <main className='max-w-5xl w-full h-full flex flex-col items-center justify-center py-4'>{children}</main>
     </div>
   );
 };

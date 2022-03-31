@@ -2,6 +2,7 @@ import Layout from "../../components/Layout";
 import styled from "styled-components";
 
 const Crypto = ({ crypto }) => {
+  console.log(crypto);
   return (
     <Layout>
       <CryptoPage>

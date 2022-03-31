@@ -18,9 +18,9 @@ const Coins = ({
 }) => {
 
   return (
-    <Link href="/crypto/[id]" as={`/crypto/${id}`}>
+    <Link href="/coin/[id]" as={`/coin/${id}`}>
       <a className='w-full cursor-pointer hover:bg-[#623AFF99]'>
-        <div className='w-full h-full grid grid-cols-12 border-b border-gray-700 p-4 text-sm flex items-center'>
+        <div className='w-full h-full grid grid-cols-12 border-b border-[#202020] py-4 px-8 text-sm flex items-center'>
           <div>{rank}</div>
           <div className='w-full h-full flex items-center col-start-2 col-span-2'>
             <img src={image} alt={name} className='w-1/6 mr-2' />

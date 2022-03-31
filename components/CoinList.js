@@ -3,7 +3,7 @@ import {CoinListCategories} from './CoinListCategories'
 
 const CoinList = ({ filteredCoins }) => {
   return (
-    <div className='w-full h-full grid grid-rows bg-[#121212] rounded-2xl'>
+    <div className='w-full h-full grid grid-rows bg-[#303030] rounded-2xl'>
       <CoinListCategories />
       {filteredCoins.map((coin) => {
         return (
