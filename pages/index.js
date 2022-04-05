@@ -1,26 +1,26 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SearchBar } from "../components/SearchBar";
-import { TopGrowing } from "../components/TopGrowing";
+import { TopMovers } from "../components/TopMovers";
 import CoinList from "../components/CoinList";
 import Layout from "../components/Layout";
 
-export default function Home({ filteredCoins, topGrowingCoins }) {
+export default function App({ coins }) {
   const [search, setSearch] = useState("");
 
-  const allCoins = filteredCoins.filter((coin) =>
-    coin.name.toLowerCase().includes(search.toLowerCase())
-  );
-
-  const handleChange = (e) => {
-    e.preventDefault();
-    setSearch(e.target.value.toLowerCase());
-  };
+  const topMovers = [...coins]
+    .sort((a, b) =>
+      a.price_change_percentage_24h_in_currency <
+      b.price_change_percentage_24h_in_currency
+        ? 1
+        : -1
+    )
+    .slice(0, 3);
 
   return (
     <Layout>
-      <TopGrowing coins={topGrowingCoins} />
+      <TopMovers coins={topMovers} />
       {/* <SearchBar type="text" placeholder="Search" onChange={handleChange} /> */}
-      <CoinList filteredCoins={allCoins} />
+      <CoinList coins={coins} />
     </Layout>
   );
 }
@@ -30,20 +30,12 @@ export const getServerSideProps = async () => {
     "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d"
   );
   //const global = await fetch(`https://api.coingecko.com/api/v3/global`);
-  const filteredCoins = await res.json();
-  const topGrowingCoins = await filteredCoins
-    .sort((a, b) =>
-      a.price_change_percentage_24h_in_currency <
-      b.price_change_percentage_24h_in_currency
-        ? 1
-        : -1
-    )
-    .slice(0, 3);
+  const coins = await res.json();
+  // const top = await res.json();
 
   return {
     props: {
-      filteredCoins,
-      topGrowingCoins,
+      coins,
     },
   };
 };

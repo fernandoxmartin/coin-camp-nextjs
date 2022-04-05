@@ -1,11 +1,11 @@
 import Coins from "./Coins";
-import {CoinListCategories} from './CoinListCategories'
+import { CoinListCategories } from "./CoinListCategories";
 
-const CoinList = ({ filteredCoins }) => {
+const CoinList = ({ coins }) => {
   return (
-    <div className='w-full h-full grid grid-rows bg-[#303030] rounded-2xl'>
+    <div className="w-full h-full grid grid-rows bg-[#303030] rounded-2xl">
       <CoinListCategories />
-      {filteredCoins.map((coin) => {
+      {coins.map((coin) => {
         return (
           <Coins
             key={coin.id}
@@ -18,8 +18,8 @@ const CoinList = ({ filteredCoins }) => {
             priceChangePerc_1h={coin.price_change_percentage_1h_in_currency}
             priceChangePerc_24h={coin.price_change_percentage_24h_in_currency}
             priceChangePerc_7d={coin.price_change_percentage_7d_in_currency}
-            marketcap={coin.total_volume}
-            volume={coin.market_cap}
+            marketcap={coin.market_cap}
+            volume={coin.total_volume}
             sparkline={coin.sparkline_in_7d}
           />
         );

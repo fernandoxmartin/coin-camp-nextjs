@@ -1,6 +1,4 @@
 export const CoinStats = ({ coin }) => {
-  console.log(coin);
-
   return (
     <div className="w-full h-full bg-[#303030] rounded-2xl p-8 flex flex-col justify-between space-y-8 text-sm">
       <div className="flex items-center justify-between">

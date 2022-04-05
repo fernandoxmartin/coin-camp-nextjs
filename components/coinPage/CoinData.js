@@ -37,7 +37,7 @@ export const CoinData = ({ coin }) => {
           </p>
         </div>
         <div>
-          <h2 className="text-gray-400 pb-4">Total Volume</h2>
+          <h2 className="text-gray-400 pb-4">24h Volume</h2>
           <p className="uppercase">
             {abbreviate(coin.market_data.total_volume.usd, 2)}
           </p>
