@@ -9,6 +9,7 @@ export default function App({ coins }) {
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [coinsPerPage] = useState(20);
+  const [filteredCoins, setFilteredCoins] = useState(coins);
 
   const topMovers = [...coins]
     .sort((a, b) =>
@@ -19,9 +20,28 @@ export default function App({ coins }) {
     )
     .slice(0, 3);
 
+  const toggleSortedCoins = (id) => {
+    if (
+      filteredCoins[0][id] ===
+      Math.max.apply(
+        Math,
+        filteredCoins.map((a) => a[id])
+      )
+    ) {
+      const sortedCoins = [...coins].sort((a, b) => (a[id] > b[id] ? 1 : -1));
+      setFilteredCoins(sortedCoins);
+    } else {
+      const sortedCoins = [...coins].sort((a, b) => (a[id] < b[id] ? 1 : -1));
+      setFilteredCoins(sortedCoins);
+    }
+  };
+
   const indexOfLastCoin = currentPage * coinsPerPage;
   const indexOfFirstCoin = indexOfLastCoin - coinsPerPage;
-  const currentCoins = [...coins].slice(indexOfFirstCoin, indexOfLastCoin);
+  const currentCoins = [...filteredCoins].slice(
+    indexOfFirstCoin,
+    indexOfLastCoin
+  );
   const paginate = (page) => setCurrentPage(page);
 
   return (
@@ -33,7 +53,7 @@ export default function App({ coins }) {
         totalCoins={coins.length}
         paginate={paginate}
       />
-      <CoinList coins={currentCoins} />
+      <CoinList coins={currentCoins} toggleSortedCoins={toggleSortedCoins} />
     </Layout>
   );
 }

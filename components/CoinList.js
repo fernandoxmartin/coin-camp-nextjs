@@ -1,10 +1,10 @@
 import Coins from "./Coins";
 import { CoinListCategories } from "./CoinListCategories";
 
-const CoinList = ({ coins }) => {
+const CoinList = ({ coins, toggleSortedCoins }) => {
   return (
     <div className="w-full h-full grid grid-rows bg-[#303030] rounded-2xl">
-      <CoinListCategories />
+      <CoinListCategories toggleSortedCoins={toggleSortedCoins} />
       {coins.map((coin) => {
         return (
           <Coins
