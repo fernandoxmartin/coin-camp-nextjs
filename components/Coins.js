@@ -18,7 +18,7 @@ const Coins = ({
 }) => {
   return (
     <Link href="/coin/[id]" as={`/coin/${id}`}>
-      <a className="w-full cursor-pointer hover:bg-[#623AFF99]">
+      <a className="w-full cursor-pointer hover:bg-indigo-700">
         <div className="w-full h-full grid grid-cols-12 border-b border-[#202020] py-4 px-8 text-sm flex items-center">
           <div>{rank}</div>
           <div className="w-full h-full flex items-center col-start-2 col-span-2">
@@ -31,21 +31,21 @@ const Coins = ({
           <div className="col-start-4 col-span-2">${price}</div>
           <div
             className={
-              priceChangePerc_1h < 0 ? "text-red-400" : "text-green-400"
+              priceChangePerc_1h < 0 ? "text-red-500" : "text-green-500"
             }
           >
             {priceChangePerc_1h.toFixed(2)}%
           </div>
           <div
             className={
-              priceChangePerc_24h < 0 ? "text-red-400" : "text-green-400"
+              priceChangePerc_24h < 0 ? "text-red-500" : "text-green-500"
             }
           >
             {priceChangePerc_24h.toFixed(2)}%
           </div>
           <div
             className={
-              priceChangePerc_7d < 0 ? "text-red-400" : "text-green-400"
+              priceChangePerc_7d < 0 ? "text-red-500" : "text-green-500"
             }
           >
             {priceChangePerc_7d.toFixed(2)}%

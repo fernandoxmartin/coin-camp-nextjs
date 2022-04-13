@@ -1,4 +1,4 @@
-import { AiFillCaretUp, AiFillCaretDown } from "react-icons/ai";
+import { BsFillCaretUpFill, BsFillCaretDownFill } from "react-icons/bs";
 
 export const CoinListCategories = ({ toggleSortedCoins }) => {
   return (
@@ -7,23 +7,19 @@ export const CoinListCategories = ({ toggleSortedCoins }) => {
       <h2 className="col-span-2">Name</h2>
 
       <div className="col-span-2 flex items-center">
-        <div className="flex flex-col items-center mr-0.5">
-          <AiFillCaretUp size={11} />
-          <AiFillCaretDown size={11} className="-mt-1" />
-        </div>
         <h2
           className="cursor-pointer"
           onClick={() => toggleSortedCoins("current_price")}
         >
           Price
         </h2>
+        <div className="flex flex-col items-center ml-0.5">
+          <BsFillCaretUpFill size={11} />
+          <BsFillCaretDownFill size={11} className="-mt-1" />
+        </div>
       </div>
 
       <div className="flex items-center">
-        <div className="flex flex-col items-center mr-0.5">
-          <AiFillCaretUp size={11} />
-          <AiFillCaretDown size={11} className="-mt-1" />
-        </div>
         <h2
           className="cursor-pointer"
           onClick={() =>
@@ -32,13 +28,13 @@ export const CoinListCategories = ({ toggleSortedCoins }) => {
         >
           1h
         </h2>
+        <div className="flex flex-col items-center ml-0.5">
+          <BsFillCaretUpFill size={11} />
+          <BsFillCaretDownFill size={11} className="-mt-1" />
+        </div>
       </div>
 
       <div className="flex items-center">
-        <div className="flex flex-col items-center mr-0.5">
-          <AiFillCaretUp size={11} />
-          <AiFillCaretDown size={11} className="-mt-1" />
-        </div>
         <h2
           className="cursor-pointer"
           onClick={() =>
@@ -47,13 +43,13 @@ export const CoinListCategories = ({ toggleSortedCoins }) => {
         >
           24h
         </h2>
+        <div className="flex flex-col items-center ml-0.5">
+          <BsFillCaretUpFill size={11} />
+          <BsFillCaretDownFill size={11} className="-mt-1" />
+        </div>
       </div>
 
       <div className="flex items-center">
-        <div className="flex flex-col items-center mr-0.5">
-          <AiFillCaretUp size={11} />
-          <AiFillCaretDown size={11} className="-mt-1" />
-        </div>
         <h2
           className="cursor-pointer"
           onClick={() =>
@@ -62,32 +58,36 @@ export const CoinListCategories = ({ toggleSortedCoins }) => {
         >
           7d
         </h2>
+        <div className="flex flex-col items-center ml-0.5">
+          <BsFillCaretUpFill size={11} />
+          <BsFillCaretDownFill size={11} className="-mt-1" />
+        </div>
       </div>
 
       <div className="flex items-center">
-        <div className="flex flex-col items-center mr-0.5">
-          <AiFillCaretUp size={11} />
-          <AiFillCaretDown size={11} className="-mt-1" />
-        </div>
         <h2
           className="cursor-pointer"
           onClick={() => toggleSortedCoins("total_volume")}
         >
           24h Vol
         </h2>
+        <div className="flex flex-col items-center ml-0.5">
+          <BsFillCaretUpFill size={11} />
+          <BsFillCaretDownFill size={11} className="-mt-1" />
+        </div>
       </div>
 
       <div className="flex items-center">
-        <div className="flex flex-col items-center mr-0.5">
-          <AiFillCaretUp size={11} />
-          <AiFillCaretDown size={11} className="-mt-1" />
-        </div>
         <h2
           className="cursor-pointer"
           onClick={() => toggleSortedCoins("market_cap")}
         >
           Mkt Cap
         </h2>
+        <div className="flex flex-col items-center ml-0.5">
+          <BsFillCaretUpFill size={11} />
+          <BsFillCaretDownFill size={11} className="-mt-1" />
+        </div>
       </div>
 
       <h2 className="col-span-2 flex justify-center">Last 7d</h2>

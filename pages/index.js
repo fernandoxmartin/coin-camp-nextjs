@@ -8,8 +8,13 @@ import Layout from "../components/Layout";
 export default function App({ coins }) {
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [coinsPerPage] = useState(20);
+  const [coinsPerPage] = useState(15);
   const [filteredCoins, setFilteredCoins] = useState(coins);
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setSearch(e.target.value.toLowerCase());
+  };
 
   const topMovers = [...coins]
     .sort((a, b) =>
@@ -38,22 +43,22 @@ export default function App({ coins }) {
 
   const indexOfLastCoin = currentPage * coinsPerPage;
   const indexOfFirstCoin = indexOfLastCoin - coinsPerPage;
-  const currentCoins = [...filteredCoins].slice(
-    indexOfFirstCoin,
-    indexOfLastCoin
-  );
+  const currentCoins = [...filteredCoins]
+    .filter((coin) => coin.name.toLowerCase().includes(search.toLowerCase()))
+    .slice(indexOfFirstCoin, indexOfLastCoin);
   const paginate = (page) => setCurrentPage(page);
 
   return (
     <Layout>
       <TopMovers coins={topMovers} />
-      {/* <SearchBar type="text" placeholder="Search" onChange={handleChange} /> */}
+      <SearchBar type="text" placeholder="Search" onChange={handleChange} />
+
+      <CoinList coins={currentCoins} toggleSortedCoins={toggleSortedCoins} />
       <Pagination
         coinsPerPage={coinsPerPage}
         totalCoins={coins.length}
         paginate={paginate}
       />
-      <CoinList coins={currentCoins} toggleSortedCoins={toggleSortedCoins} />
     </Layout>
   );
 }

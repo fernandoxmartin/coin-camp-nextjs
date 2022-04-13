@@ -1,6 +1,8 @@
-import { Sparkline_7d } from "./Sparkline";
+import { Sparkline_24h } from "./Sparkline";
 
 export const CoinCard = ({ coin }) => {
+  const data_24h = coin.sparkline_in_7d.price.slice(-24);
+
   return (
     <div className="h-full w-1/3 grid grid-cols-2 grid-rows-2 bg-[#303030] p-8 rounded-2xl">
       <div className="w-full h-full flex flex-col">
@@ -11,10 +13,7 @@ export const CoinCard = ({ coin }) => {
         </div>
       </div>
       <div>
-        <Sparkline_7d
-          data={coin.sparkline_in_7d}
-          status={coin.priceChangePerc_7d}
-        />
+        <Sparkline_24h data={data_24h} status={coin.priceChangePerc_7d} />
       </div>
       <div className="col-span-2 flex items-end justify-between">
         <div className="text-2xl">${coin.current_price}</div>

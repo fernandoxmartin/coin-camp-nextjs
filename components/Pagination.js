@@ -8,14 +8,14 @@ export const Pagination = ({ coinsPerPage, totalCoins, paginate }) => {
   }
 
   return (
-    <div className="w-full flex justify-end p-2">
+    <div className="w-full flex items-center justify-center p-2">
       <ul className="flex">
         {pageNumbers.map((page) => {
           return (
             <li
               key={page}
               onClick={() => paginate(page)}
-              className="h-8 w-8 hover:bg-[#7755FF] cursor-pointer flex items-center justify-center"
+              className="h-8 w-8 bg-[#303030] hover:bg-indigo-700 cursor-pointer flex items-center justify-center"
             >
               {page}
             </li>
