@@ -3,9 +3,9 @@ import { CoinData } from "../../components/coinPage/CoinData";
 import { CoinStats } from "../../components/coinPage/CoinStats";
 import { CoinDesc } from "../../components/coinPage/CoinDesc";
 
-const Coin = ({ coin }) => {
+const Coin = ({ coin, global }) => {
   return (
-    <Layout>
+    <Layout global={global}>
       <div className="w-full flex items-center py-4 uppercase">
         <img src={coin.image.small} />
         <h2 className="text-2xl px-4">{coin.name}</h2>
@@ -25,15 +25,18 @@ export default Coin;
 export async function getServerSideProps(context) {
   const { id } = context.query;
 
-  const res =
-    await fetch(`https://api.coingecko.com/api/v3/coins/${id}?tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=true
-    `);
+  const [coinRes, globalRes] = await Promise.all([
+    fetch(`https://api.coingecko.com/api/v3/coins/${id}?tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=true
+    `),
+    fetch("https://api.coingecko.com/api/v3/global"),
+  ]);
 
-  const data = await res.json();
+  const [data, global] = await Promise.all([coinRes.json(), globalRes.json()]);
 
   return {
     props: {
       coin: data,
+      global,
     },
   };
 }

@@ -5,7 +5,7 @@ import { Pagination } from "../components/Pagination";
 import CoinList from "../components/CoinList";
 import Layout from "../components/Layout";
 
-export default function App({ coins }) {
+export default function App({ coins, global }) {
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [coinsPerPage] = useState(15);
@@ -49,7 +49,7 @@ export default function App({ coins }) {
   const paginate = (page) => setCurrentPage(page);
 
   return (
-    <Layout>
+    <Layout global={global}>
       <TopMovers coins={topMovers} />
       <SearchBar type="text" placeholder="Search" onChange={handleChange} />
 
@@ -64,15 +64,22 @@ export default function App({ coins }) {
 }
 
 export const getServerSideProps = async () => {
-  const res = await fetch(
-    "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d"
-  );
+  const [coinsRes, globalRes] = await Promise.all([
+    fetch(
+      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d"
+    ),
+    fetch("https://api.coingecko.com/api/v3/global"),
+  ]);
 
-  const coins = await res.json();
+  const [coins, global] = await Promise.all([
+    coinsRes.json(),
+    globalRes.json(),
+  ]);
 
   return {
     props: {
       coins,
+      global,
     },
   };
 };

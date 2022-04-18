@@ -1,6 +1,6 @@
 export const CoinStats = ({ coin }) => {
   return (
-    <div className="w-full h-full bg-[#303030] rounded-2xl p-8 flex flex-col justify-between space-y-8 text-sm">
+    <div className="w-full h-full bg-[#303030] rounded-2xl p-8 flex flex-col justify-between space-y-8 text-sm border-t-4 border-indigo-700">
       <div className="flex items-center justify-between">
         <h2>Market Cap Rank</h2>
         <p>{coin.market_cap_rank}</p>
@@ -26,7 +26,7 @@ export const CoinStats = ({ coin }) => {
 
       <div className="flex items-center justify-between">
         <p>
-          Price Change <span className="text-gray-400">[1h]</span>
+          Price Change <span className="text-gray-400 text-xs">(1h)</span>
         </p>
         <p
           className={
@@ -43,7 +43,7 @@ export const CoinStats = ({ coin }) => {
       </div>
       <div className="flex items-center justify-between">
         <p>
-          Price Change <span className="text-gray-400">[24h]</span>
+          Price Change <span className="text-gray-400 text-xs">(24h)</span>
         </p>
         <p
           className={
@@ -60,7 +60,7 @@ export const CoinStats = ({ coin }) => {
       </div>
       <div className="flex items-center justify-between">
         <p>
-          Price Change <span className="text-gray-400">[7d]</span>
+          Price Change <span className="text-gray-400 text-xs">(7d)</span>
         </p>
         <p
           className={

@@ -1,11 +1,9 @@
 var abbreviate = require("number-abbreviate");
-import { Sparkline_24h } from "../Sparkline";
+import { Sparkline_7d } from "../Sparkline";
 
 export const CoinData = ({ coin }) => {
-  const data_24h = coin.market_data.sparkline_7d.price.slice(-24);
-
   return (
-    <div className="w-full h-full bg-[#303030] rounded-2xl col-span-2 p-8">
+    <div className="w-full h-full bg-[#303030] rounded-2xl col-span-2 p-8 border-t-4 border-indigo-700">
       <div>
         <h2 className="text-3xl">
           ${coin.market_data.current_price.usd.toLocaleString("en-US")}
@@ -13,20 +11,20 @@ export const CoinData = ({ coin }) => {
         <div className="flex items-center">
           <p
             className={
-              coin.market_data.price_change_percentage_24h < 0
+              coin.market_data.price_change_percentage_7d < 0
                 ? "text-red-400"
                 : "text-green-500"
             }
           >
-            {coin.market_data.price_change_percentage_24h.toFixed(2)}%
+            {coin.market_data.price_change_percentage_7d.toFixed(2)}%
           </p>
-          <p className="text-xs text-gray-400 pl-4">(24h)</p>
+          <p className="text-xs text-gray-400 pl-4">(7d)</p>
         </div>
       </div>
       <div>
-        <Sparkline_24h
-          data={data_24h}
-          status={coin.market_data.price_change_percentage_24h}
+        <Sparkline_7d
+          data={coin.market_data.sparkline_7d}
+          status={coin.market_data.price_change_percentage_7d}
         />
       </div>
       <div className="w-full grid grid-cols-3 mt-12 mb-4 text-sm">

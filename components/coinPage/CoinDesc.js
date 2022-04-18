@@ -1,6 +1,6 @@
 export const CoinDesc = ({ coin }) => {
   return (
-    <div className="bg-[#303030] rounded-2xl col-span-3 p-8">
+    <div className="bg-[#303030] rounded-2xl col-span-3 p-8 border-t-4 border-indigo-700">
       <h2 className="text-lg">About</h2>
       <p className="text-sm py-4 leading-6">
         {(coin.description.en && coin.description.en) || "N/A"}

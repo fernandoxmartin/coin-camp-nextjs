@@ -78,7 +78,7 @@ export const Sparkline_7d = ({ data, status }) => {
       data={dataPoints}
       options={config}
       width={400}
-      height={200}
+      height={150}
       redraw={true}
     />
   );
