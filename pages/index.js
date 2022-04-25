@@ -23,7 +23,7 @@ export default function App({ coins, global }) {
         ? 1
         : -1
     )
-    .slice(0, 3);
+    .slice(0, 5);
 
   const toggleSortedCoins = (id) => {
     if (

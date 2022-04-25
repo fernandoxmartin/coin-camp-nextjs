@@ -2,11 +2,11 @@ import { BsFillCaretUpFill, BsFillCaretDownFill } from "react-icons/bs";
 
 export const CoinListCategories = ({ toggleSortedCoins }) => {
   return (
-    <div className="w-full h-full grid grid-cols-12 border-b border-[#202020] p-4 px-8 text-sm items-center">
-      <h2>#</h2>
-      <h2 className="col-span-2">Name</h2>
+    <div className="w-full h-full grid grid-cols-2 border-b border-[#202020] p-4 px-8 text-sm items-center md:grid-cols-8 lg:grid-cols-12">
+      <h2 className="hidden md:block">#</h2>
+      <h2 className="md:col-span-2">Name</h2>
 
-      <div className="col-span-2 flex items-center">
+      <div className="flex justify-end items-center md:col-span-2 md:justify-start">
         <h2
           className="cursor-pointer"
           onClick={() => toggleSortedCoins("current_price")}
@@ -19,7 +19,7 @@ export const CoinListCategories = ({ toggleSortedCoins }) => {
         </div>
       </div>
 
-      <div className="flex items-center">
+      <div className="lg:flex items-center hidden ">
         <h2
           className="cursor-pointer"
           onClick={() =>
@@ -34,7 +34,7 @@ export const CoinListCategories = ({ toggleSortedCoins }) => {
         </div>
       </div>
 
-      <div className="flex items-center">
+      <div className="lg:flex items-center hidden">
         <h2
           className="cursor-pointer"
           onClick={() =>
@@ -49,7 +49,7 @@ export const CoinListCategories = ({ toggleSortedCoins }) => {
         </div>
       </div>
 
-      <div className="flex items-center">
+      <div className="lg:flex items-center hidden">
         <h2
           className="cursor-pointer"
           onClick={() =>
@@ -64,7 +64,7 @@ export const CoinListCategories = ({ toggleSortedCoins }) => {
         </div>
       </div>
 
-      <div className="flex items-center">
+      <div className="md:flex items-center hidden">
         <h2
           className="cursor-pointer"
           onClick={() => toggleSortedCoins("total_volume")}
@@ -77,7 +77,7 @@ export const CoinListCategories = ({ toggleSortedCoins }) => {
         </div>
       </div>
 
-      <div className="flex items-center">
+      <div className="md:flex flex items-center hidden">
         <h2
           className="cursor-pointer"
           onClick={() => toggleSortedCoins("market_cap")}
@@ -90,7 +90,7 @@ export const CoinListCategories = ({ toggleSortedCoins }) => {
         </div>
       </div>
 
-      <h2 className="col-span-2 flex justify-center">Last 7d</h2>
+      <h2 className="lg:col-span-2 md:flex justify-center hidden">Last 7d</h2>
     </div>
   );
 };

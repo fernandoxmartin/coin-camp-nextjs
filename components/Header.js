@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 var abbreviate = require("number-abbreviate");
 
 export const Header = ({ global }) => {
@@ -7,25 +8,28 @@ export const Header = ({ global }) => {
 
   return (
     <div className="h-20 w-full flex items-center justify-center bg-[#303030]">
-      <div className="h-full max-w-6xl w-full flex items-center justify-between">
+      <div className="h-full max-w-6xl w-full flex items-center justify-between px-4">
         <Link href="/">
           <a>
-            <h1 className="text-3xl uppercase font-black">coin camp</h1>
+            <Image src={"/logo.png"} alt="logo" width="50" height="50" />
           </a>
         </Link>
-        <div className="w-1/2 flex items-center justify-end tracking-wide text-sm">
-          <p>
-            Coins: <span className="font-black">{active_cryptocurrencies}</span>
+        <div className="flex items-center justify-end tracking-wide text-xs">
+          <p className="flex flex-col items-center">
+            Coins:{" "}
+            <span className="font-black md:text-sm">
+              {active_cryptocurrencies}
+            </span>
           </p>
-          <p className="ml-8">
-            Mkt Cap:{" "}
-            <span className="font-black uppercase">
+          <p className="ml-8 flex flex-col items-center">
+            Mkt Cap:
+            <span className="font-black uppercase md:text-sm">
               {abbreviate(total_market_cap.usd, 2)}
             </span>
           </p>
-          <p className="ml-8">
-            24h Vol:{" "}
-            <span className="font-black uppercase">
+          <p className="ml-8 flex flex-col items-center">
+            24h Vol:
+            <span className="font-black uppercase md:text-sm">
               {abbreviate(total_volume.usd, 2)}
             </span>
           </p>

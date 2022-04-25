@@ -1,4 +1,5 @@
-import { Line } from "react-chartjs-2";
+import React, { useRef } from "react";
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,6 +11,7 @@ import {
   Legend,
   Filler,
 } from "chart.js";
+import { Line } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale,
@@ -27,9 +29,9 @@ export const Sparkline_7d = ({ data, status }) => {
 
   const borderColor = (e) => {
     if (e < 0) {
-      return "#e8503a";
+      return "#FF3838";
     }
-    return "#18BF65";
+    return "#19CD09";
   };
 
   const dataPoints = {
@@ -84,19 +86,19 @@ export const Sparkline_7d = ({ data, status }) => {
   );
 };
 
-export const Sparkline_24h = ({ data, status }) => {
+export const Sparkline_24h = ({ data, status, w, h }) => {
   const borderColor = (e) => {
     if (e < 0) {
-      return "#e8503a";
+      return "#FF3838";
     }
-    return "#18BF65";
+    return "#19CD09";
   };
 
   const fillColor = (e) => {
     if (e < 0) {
-      return "#e8503a22";
+      return "#FF383822";
     }
-    return "#18BF6522";
+    return "#19CD0922";
   };
 
   const dataPoints = {
@@ -106,7 +108,7 @@ export const Sparkline_24h = ({ data, status }) => {
         data: data,
         borderColor: borderColor(status),
         borderWidth: 4,
-        fill: true,
+        fill: "start",
         backgroundColor: fillColor(status),
         tension: 0.5,
       },
@@ -115,6 +117,7 @@ export const Sparkline_24h = ({ data, status }) => {
 
   const config = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         display: false,
@@ -145,8 +148,9 @@ export const Sparkline_24h = ({ data, status }) => {
     <Line
       data={dataPoints}
       options={config}
-      width={400}
-      height={150}
+      width={w}
+      height={h}
+      redraw={true}
       className="mb-4"
     />
   );

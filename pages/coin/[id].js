@@ -11,7 +11,7 @@ const Coin = ({ coin, global }) => {
         <h2 className="text-2xl px-4">{coin.name}</h2>
         <p className="text-sm text-gray-400">{coin.symbol}</p>
       </div>
-      <div className="w-full h-full grid grid-cols-3 grid-rows-auto gap-4 ">
+      <div className="w-full h-full md:grid md:grid-cols-3 md:grid-rows-auto md:gap-4 ">
         <CoinData coin={coin} />
         <CoinStats coin={coin} />
         <CoinDesc coin={coin} />

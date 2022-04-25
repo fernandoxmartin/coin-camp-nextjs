@@ -1,6 +1,6 @@
 export const CoinStats = ({ coin }) => {
   return (
-    <div className="w-full h-full bg-[#303030] rounded-2xl p-8 flex flex-col justify-between space-y-8 text-sm border-t-4 border-indigo-700">
+    <div className="w-full h-full bg-[#303030] rounded-2xl p-8 mb-4 flex flex-col justify-between space-y-8 text-sm border-t-4 border-indigo-700">
       <div className="flex items-center justify-between">
         <h2>Market Cap Rank</h2>
         <p>{coin.market_cap_rank}</p>
@@ -31,8 +31,8 @@ export const CoinStats = ({ coin }) => {
         <p
           className={
             coin.market_data.price_change_percentage_1h_in_currency.usd < 0
-              ? "text-red-400"
-              : "text-green-400"
+              ? "text-red"
+              : "text-green"
           }
         >
           {coin.market_data.price_change_percentage_1h_in_currency.usd.toFixed(
@@ -48,8 +48,8 @@ export const CoinStats = ({ coin }) => {
         <p
           className={
             coin.market_data.price_change_percentage_24h_in_currency.usd < 0
-              ? "text-red-400"
-              : "text-green-400"
+              ? "text-red"
+              : "text-green"
           }
         >
           {coin.market_data.price_change_percentage_24h_in_currency.usd.toFixed(
@@ -65,8 +65,8 @@ export const CoinStats = ({ coin }) => {
         <p
           className={
             coin.market_data.price_change_percentage_7d_in_currency.usd < 0
-              ? "text-red-400"
-              : "text-green-400"
+              ? "text-red"
+              : "text-green"
           }
         >
           {coin.market_data.price_change_percentage_7d_in_currency.usd.toFixed(

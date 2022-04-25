@@ -13,7 +13,7 @@ const Layout = ({ children, title = "Coin Camp", global }) => {
       <header className="w-full flex justify-center">
         <Header global={global} />
       </header>
-      <main className="max-w-6xl w-full h-full flex flex-col items-center justify-center py-4">
+      <main className="max-w-6xl w-full h-full flex flex-col items-center justify-center p-4">
         {children}
       </main>
     </div>
