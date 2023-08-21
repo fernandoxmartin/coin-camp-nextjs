@@ -10,9 +10,7 @@ export const Header = ({ global }) => {
     <div className="h-20 w-full flex items-center justify-center bg-[#303030]">
       <div className="h-full max-w-6xl w-full flex items-center justify-between px-4">
         <Link href="/">
-          <a>
-            <Image src={"/logo.png"} alt="logo" width="50" height="50" />
-          </a>
+          <Image src={"/logo.png"} alt="logo" width="50" height="50" />
         </Link>
         <div className="flex items-center justify-end tracking-wide text-xs">
           <p className="flex flex-col items-center">

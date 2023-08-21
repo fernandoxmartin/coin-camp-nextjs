@@ -77,7 +77,7 @@ export const CoinListCategories = ({ toggleSortedCoins }) => {
         </div>
       </div>
 
-      <div className="md:flex flex items-center hidden">
+      <div className="md:flex items-center hidden">
         <h2
           className="cursor-pointer"
           onClick={() => toggleSortedCoins("market_cap")}
