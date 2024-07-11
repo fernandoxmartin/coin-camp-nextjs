@@ -5,12 +5,27 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      colors: {
+        "lt-gray": "#272727",
+        "drk-gray": "#1A1A1A",
+        accent: "#25E78A",
+      },
+      keyframes: {
+        slideIn: {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(0%" },
+        },
+        slideOut: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%" },
+        },
+      },
+      animation: {
+        slideIn: "slideIn 2s ease-in-out",
+        slideOut: "slideOut 2s ease-in-out",
       },
     },
   },
