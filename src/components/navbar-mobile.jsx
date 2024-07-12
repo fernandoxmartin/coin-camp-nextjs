@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CgShoppingBag } from "react-icons/cg";
+import { ImCoinDollar } from "react-icons/im";
 import { PiSwapBold } from "react-icons/pi";
 import { BiNews, BiCopyright } from "react-icons/bi";
 import NavbarSettings from "./navbar-settings";
@@ -12,9 +12,9 @@ export default function NavbarMobile({ isOpen }) {
       } z-10`}
     >
       <div className="flex flex-col space-y-6 inter uppercase font-medium text-lg pt-16">
-        <Link href="/market" className="flex items-center space-x-6">
-          <CgShoppingBag size={28} />
-          <p>Market</p>
+        <Link href="/" className="flex items-center space-x-6">
+          <ImCoinDollar size={28} />
+          <p>Coins</p>
         </Link>
         <Link href="/exchange" className="flex items-center space-x-6">
           <PiSwapBold size={28} />

@@ -19,6 +19,12 @@
 }
 
 body {
-  background: #212121;
+  background: #272727;
   color: #e2e2e2;
+}
+
+.active {
+  background-color: #25e78a;
+  color: #272727;
+  border-color: #373737;
 }
