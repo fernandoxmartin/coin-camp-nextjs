@@ -1,7 +1,9 @@
+"use client";
 import Image from "next/image";
 import React from "react";
+import { useSearchParams } from "next/navigation";
 
-export default function CoinCard({ coin, timeframe }) {
+export default function CoinCard({ coin }) {
   const {
     id,
     symbol,
@@ -15,6 +17,9 @@ export default function CoinCard({ coin, timeframe }) {
     price_change_percentage_24h_in_currency,
     price_change_percentage_7d_in_currency,
   } = coin;
+
+  const searchParams = useSearchParams();
+  const timeframe = searchParams.get("timeframe");
 
   const change_percentage =
     timeframe == "1h"
