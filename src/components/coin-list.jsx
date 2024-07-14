@@ -1,12 +1,13 @@
+"use client";
 import CoinCard from "./coin-card";
 import CoinFilter from "./coin-filter";
-import { getCoins } from "@/app/lib/get-coins";
 import CoinCategories from "./coin-categories";
 import Pagination from "./pagination";
+import { useSearchParams } from "next/navigation";
 
-export default async function CoinList({ params }) {
-  const { timeframe, sort, page } = params;
-  const coins = await getCoins(timeframe, sort);
+export default function CoinList({ coins }) {
+  const searchParams = useSearchParams();
+  const page = searchParams.get("page");
 
   const current_page = page ?? "1";
   const start = (Number(current_page) - 1) * Number(15);
@@ -22,7 +23,7 @@ export default async function CoinList({ params }) {
       </div>
 
       <div className="pt-12 pb-8">
-        <CoinCategories params={params} />
+        <CoinCategories />
         {entries?.map((coin) => {
           return <CoinCard coin={coin} key={coin.id} />;
         })}

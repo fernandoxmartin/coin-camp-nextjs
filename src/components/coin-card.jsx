@@ -1,9 +1,8 @@
 "use client";
 import Image from "next/image";
-import React from "react";
 import { useSearchParams } from "next/navigation";
 
-export default function CoinCard({ coin }) {
+export default function CoinCard({ coin, topChange }) {
   const {
     id,
     symbol,
@@ -31,7 +30,7 @@ export default function CoinCard({ coin }) {
       : price_change_percentage_1h_in_currency;
 
   return (
-    <div className="grid grid-cols-[40%,_25%,_35%] py-4 even:bg-md-gray rounded-lg px-2">
+    <div className="grid grid-cols-[40%,_25%,_35%] py-4 even:bg-md-gray rounded-lg px-2 font-medium">
       <div className="flex items-start justify-start space-x-2">
         <Image
           priority
@@ -46,13 +45,25 @@ export default function CoinCard({ coin }) {
           <p className="text-xs uppercase text-neutral-500">{symbol}</p>
         </div>
       </div>
-      <p
-        className={`${
-          change_percentage < 0 ? "text-red-500" : "text-accent"
-        } text-sm text-end self-center`}
-      >
-        {change_percentage.toFixed(2)}%
-      </p>
+
+      {!topChange ? (
+        <p
+          className={`${
+            change_percentage < 0 ? "text-red-500" : "text-accent"
+          } text-sm text-end self-center`}
+        >
+          {change_percentage.toFixed(2)}%
+        </p>
+      ) : (
+        <p
+          className={`${
+            topChange < 0 ? "text-red-500" : "text-accent"
+          } text-sm text-end self-center`}
+        >
+          {topChange.toFixed(2)}%
+        </p>
+      )}
+
       <p className="text-sm text-end self-center">
         {new Intl.NumberFormat("en-US", {
           currency: "USD",

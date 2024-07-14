@@ -1,7 +1,12 @@
+"use client";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
-export default function CoinCategories({ params }) {
-  const { timeframe, sort } = params;
+export default function CoinCategories() {
+  const searchParams = useSearchParams();
+  const timeframe = searchParams.get("timeframe");
+  const sort = searchParams.get("sort");
+
   const selectedTimeframe = timeframe || "1h";
   const selectedSort = (currentSort, category) => {
     const asc = `${category}_asc`;
