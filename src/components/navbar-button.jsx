@@ -1,13 +1,16 @@
 "use client";
+import { useNavContext } from "@/contexts/nav-context";
 import Image from "next/image";
 
-export default function NavbarButton({ isOpen, setOpen }) {
+export default function NavbarButton() {
+  const { open, setOpen } = useNavContext();
+
   const toggleNavBar = () => {
-    setOpen(!isOpen);
+    setOpen(!open);
   };
 
   return (
-    <button onClick={toggleNavBar} className="flex md:hidden z-10">
+    <button onClick={toggleNavBar} className="flex z-50 lg:hidden">
       <Image
         priority
         src={"/menu.png"}

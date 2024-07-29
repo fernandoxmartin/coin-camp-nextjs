@@ -1,14 +1,18 @@
+"use client";
 import Link from "next/link";
 import { ImCoinDollar } from "react-icons/im";
 import { PiSwapBold } from "react-icons/pi";
 import { BiNews, BiCopyright } from "react-icons/bi";
 import NavbarSettings from "./navbar-settings";
+import { useNavContext } from "@/contexts/nav-context";
 
-export default function NavbarMobile({ isOpen }) {
+export default function NavbarMobile() {
+  const { open } = useNavContext();
+
   return (
     <div
       className={`w-full h-[100dvh] bg-drk-gray absolute left-0 top-0 p-8 pt-36 flex flex-col items-center justify-between transition duration-500 ease-in-out ${
-        isOpen ? "translate-x-[0%]" : "translate-x-[-100%]"
+        open ? "translate-x-[0%]" : "translate-x-[-100%]"
       } z-10`}
     >
       <div className="flex flex-col space-y-6 inter uppercase font-medium text-lg pt-16">

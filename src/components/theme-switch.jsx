@@ -13,11 +13,11 @@ export default function ThemeSwitch() {
 
   if (resolvedTheme === "dark") {
     return (
-      <div className="w-full flex items-center">
-        <div className="w-full flex items-center justify-center">
+      <div className="w-full h-full flex items-center">
+        <div className="w-full h-full flex items-center justify-center">
           <FiSun onClick={() => setTheme("light")} />
         </div>
-        <div className="w-full flex items-center justify-center py-2 bg-accent rounded-lg text-neutral-800">
+        <div className="w-full h-full flex items-center justify-center bg-accent rounded-md text-neutral-800">
           <FiMoon onClick={() => setTheme("dark")} />
         </div>
       </div>
@@ -26,11 +26,11 @@ export default function ThemeSwitch() {
 
   if (resolvedTheme === "light") {
     return (
-      <div className="w-full flex items-center">
-        <div className="w-full flex items-center justify-center py-2 bg-accent rounded-lg text-neutral-800">
+      <div className="w-full h-full flex items-center">
+        <div className="w-full h-full flex items-center justify-center bg-accent rounded-md text-neutral-800">
           <FiSun onClick={() => setTheme("light")} />
         </div>
-        <div className="w-full flex items-center justify-center">
+        <div className="w-full h-full flex items-center justify-center">
           <FiMoon onClick={() => setTheme("dark")} />
         </div>
       </div>

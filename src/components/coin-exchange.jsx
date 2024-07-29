@@ -31,7 +31,7 @@ export default function CoinExchange({ coins }) {
         Exchange
       </h2>
       <div className="py-6 relative">
-        <div className="w-full flex items-center justify-between bg-md-gray rounded-xl p-4 mb-2">
+        <div className="w-full md:h-40 flex items-center justify-between bg-md-gray rounded-xl p-4 mb-2">
           <div className="flex items-center space-x-2">
             <Image
               priority
@@ -75,7 +75,7 @@ export default function CoinExchange({ coins }) {
           <CgArrowsExchangeAltV className="text-4xl text-accent" />
         </div>
 
-        <div className="w-full flex items-center justify-between bg-md-gray rounded-xl p-4">
+        <div className="w-full md:h-40 flex items-center justify-between bg-md-gray rounded-xl p-4">
           <div className="flex items-center space-x-2">
             <Image
               priority

@@ -3,6 +3,7 @@ module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/contexts/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   darkMode: "class",
@@ -28,6 +29,11 @@ module.exports = {
         slideIn: "slideIn 2s ease-in-out",
         slideOut: "slideOut 2s ease-in-out",
       },
+    },
+    screens: {
+      md: "768px",
+      lg: "1024px",
+      xl: "1250px",
     },
   },
   plugins: [],

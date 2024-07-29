@@ -3,13 +3,8 @@ import ThemeSwitch from "./theme-switch";
 
 export default function NavbarSettings() {
   return (
-    <div className="w-full flex items-center justify-center space-x-4">
-      <button className="w-20 h-10 inter text-md font-bold rounded-lg bg-neutral-700 border border-neutral-600 flex items-center justify-center drop-shadow-lg">
-        USD
-      </button>
-      <button className="w-20 h-10 rounded-lg bg-neutral-700 border border-neutral-600 flex items-center justify-center drop-shadow-lg text-xl">
-        <ThemeSwitch />
-      </button>
-    </div>
+    <button className="w-24 h-12 p-[1px] rounded-md bg-lt-gray border border-neutral-600 flex items-center justify-center drop-shadow-lg text-xl">
+      <ThemeSwitch />
+    </button>
   );
 }

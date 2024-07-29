@@ -1,23 +1,30 @@
-"use client";
-import { useState } from "react";
 import NavbarButton from "./navbar-button";
-import NavbarMobile from "./navbar-mobile";
+import NavbarSettings from "./navbar-settings";
+import SearchBar from "./search-bar";
+import Menu from "./menu";
 
 export default function Header() {
-  const [isOpen, setOpen] = useState(false);
-
   return (
-    <>
-      <div className="w-full h-10vh py-8 px-6 absolute left-0 top-0 z-20">
-        <div className="flex justify-between items-center md:justify-center">
-          <NavbarButton isOpen={isOpen} setOpen={setOpen} />
+    <div className="w-full max-w-[1250px] h-10vh py-8 px-6 z-50">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center space-x-4">
           <h1 className="flex items-center text-4xl bayon uppercase tracking-widest">
             Coin
             <span className="text-accent pl-2">Camp</span>
           </h1>
+          <Menu />
+        </div>
+
+        <div className="flex items-center space-x-6 ">
+          <div className="w-[300px] lg:w-[400px] hidden md:block">
+            <SearchBar />
+          </div>
+          <NavbarButton />
+          <div className="hidden lg:block">
+            <NavbarSettings />
+          </div>
         </div>
       </div>
-      <NavbarMobile isOpen={isOpen} />
-    </>
+    </div>
   );
 }

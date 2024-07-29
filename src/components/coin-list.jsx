@@ -10,8 +10,8 @@ export default function CoinList({ coins }) {
   const page = searchParams.get("page");
 
   const current_page = page ?? "1";
-  const start = (Number(current_page) - 1) * Number(15);
-  const end = start + Number(15);
+  const start = (Number(current_page) - 1) * Number(10);
+  const end = start + Number(10);
 
   const entries = coins.slice(start, end);
 
@@ -22,7 +22,7 @@ export default function CoinList({ coins }) {
         <CoinFilter />
       </div>
 
-      <div className="pt-12 pb-8">
+      <div className="pt-12 pb-8 lg:pb-4">
         <CoinCategories />
         {entries?.map((coin) => {
           return <CoinCard coin={coin} key={coin.id} />;

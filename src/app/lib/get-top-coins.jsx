@@ -15,5 +15,5 @@ export function getTopCoins(coins) {
     )
     .slice(0, 2);
 
-  return { gainers, losers };
+  return [gainers, losers];
 }

@@ -1,6 +1,7 @@
 import { Inter, Bayon } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
+import NavbarMobile from "@/components/navbar-mobile";
 import Providers from "./providers";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -20,8 +21,14 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${bayon.variable}`}>
         <Providers>
-          <Header />
-          {children}
+          <div className="w-full flex items-center justify-center">
+            <Header />
+          </div>
+
+          <NavbarMobile />
+          <main className="w-full flex items-center justify-center">
+            {children}
+          </main>
         </Providers>
       </body>
     </html>
