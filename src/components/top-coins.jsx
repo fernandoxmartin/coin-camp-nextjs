@@ -32,8 +32,8 @@ export default function TopCoins({ coins }) {
                         height="0"
                         className="w-8 h-8 self-center"
                       />
-                      <div>
-                        <p className="text-sm">{coin.name}</p>
+                      <div className="w-full">
+                        <p className="text-sm truncate">{coin.name}</p>
                         <p className="text-xs uppercase text-neutral-500">
                           {coin.symbol}
                         </p>

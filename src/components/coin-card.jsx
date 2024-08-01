@@ -46,8 +46,8 @@ export default function CoinCard({ coin }) {
           height="0"
           className="w-8 h-8 self-center"
         />
-        <div>
-          <p className="text-sm">{name}</p>
+        <div className="w-full">
+          <p className="text-sm truncate">{name}</p>
           <p className="text-xs uppercase text-neutral-500">{symbol}</p>
         </div>
       </div>
