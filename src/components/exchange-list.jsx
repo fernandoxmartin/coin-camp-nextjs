@@ -22,7 +22,7 @@ export default function ExchangeList({ coins }) {
     }).format(coin.current_price);
 
   return (
-    <div className="w-full grid gap-2 md:gap-4 md:grid-cols-2">
+    <div className="w-full grid gap-2 md:gap-4 md:grid-cols-2 lg:grid-cols-3">
       {coins.map((coin) => {
         const amount = calculateExchange(coin);
         return (
@@ -48,7 +48,6 @@ export default function ExchangeList({ coins }) {
                 </p>
               </div>
             </div>
-
             <div className="w-1/2 text-end space-y-2">
               <p className="text-xs text-neutral-500 text-end uppercase font-medium">{`1 ${
                 coin.symbol
