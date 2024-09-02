@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { BiChevronDown } from "react-icons/bi";
 
 export default function Currency() {
@@ -8,11 +8,15 @@ export default function Currency() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const currency = searchParams.get("currency") ?? "USD";
-
+  const pathname = usePathname();
   const currencies = ["CAD", "EUR", "GBP", "MXN", "USD", "YEN"];
 
   return (
-    <div className="font-medium w-20 h-8 my-auto z-5">
+    <div
+      className={`font-medium w-20 h-8 my-auto z-5 ${
+        pathname == "/coins" ? "" : "hidden"
+      }`}
+    >
       <div
         onClick={() => setOpen(!open)}
         className={`bg-lt-gray border w-full px-2 flex items-center justify-between rounded-md cursor-pointer border-neutral-600`}
