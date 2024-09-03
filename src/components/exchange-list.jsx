@@ -1,7 +1,9 @@
 "use client";
 import React from "react";
-import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
+import { formatter } from "@/app/lib/formatter";
 
 export default function ExchangeList({ coins }) {
   const searchParams = useSearchParams();
@@ -12,22 +14,17 @@ export default function ExchangeList({ coins }) {
   const calculateExchange = (e) => {
     const sum = Number(baseCoin.current_price) * Number(qty);
     const result = Number(sum) / Number(e.current_price);
-    return result.toFixed(2);
+    return result;
   };
-
-  const price = (coin) =>
-    new Intl.NumberFormat("en-US", {
-      currency: "USD",
-      style: "currency",
-    }).format(coin.current_price);
 
   return (
     <div className="w-full grid gap-2 md:gap-4 md:grid-cols-2 lg:grid-cols-3">
       {coins.map((coin) => {
         const amount = calculateExchange(coin);
         return (
-          <div
+          <Link
             key={coin.id}
+            href={`/coins/${coin.id}`}
             className={`flex items-center justify-between rounded-md p-4 bg-md-gray ${
               coin === baseCoin && "hidden"
             }`}
@@ -51,15 +48,22 @@ export default function ExchangeList({ coins }) {
             <div className="w-1/2 text-end space-y-2">
               <p className="text-xs text-neutral-500 text-end uppercase font-medium">{`1 ${
                 coin.symbol
-              } = ${price(coin)}`}</p>
+              } = ${formatter(
+                coin.current_price,
+                "currency",
+                "standard",
+                8
+              )}`}</p>
               <div className="flex items-center justify-end space-x-2">
                 <p className="text-xs text-accent">Qty</p>
                 <p className=" font-medium">
-                  {new Intl.NumberFormat("en-US").format(amount)}
+                  {new Intl.NumberFormat("en-US", {
+                    maximumFractionDigits: 10,
+                  }).format(amount)}
                 </p>
               </div>
             </div>
-          </div>
+          </Link>
         );
       })}
     </div>

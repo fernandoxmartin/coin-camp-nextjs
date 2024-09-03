@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import CoinSelect from "./coin-select";
 import { useRouter, useSearchParams } from "next/navigation";
+import { formatter } from "@/app/lib/formatter";
 
 export default function CoinBase({ coins }) {
   const [quantity, setQty] = useState("1");
@@ -11,12 +12,6 @@ export default function CoinBase({ coins }) {
   const baseCoin = coins.find((coin) => coin.symbol === base);
   const qty = searchParams.get("qty") ?? "1";
   const qtyParam = new URLSearchParams(searchParams.toString());
-
-  const price = (coin) =>
-    new Intl.NumberFormat("en-US", {
-      currency: "USD",
-      style: "currency",
-    }).format(coin.current_price);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,8 +23,11 @@ export default function CoinBase({ coins }) {
     <div className="w-full flex flex-col md:flex-row justify-between bg-md-gray rounded-xl p-4 space-y-4 md:space-y-0">
       <div className="w-full flex flex-col">
         <CoinSelect coins={coins} />
-        <p className="w-full text-xs text-neutral-500 uppercase font-medium pt-4">{`1 ${base} = ${price(
-          baseCoin
+        <p className="w-full text-xs text-neutral-500 uppercase font-medium pt-4">{`1 ${base} = ${formatter(
+          baseCoin.current_price,
+          "currency",
+          "standard",
+          8
         )}`}</p>
       </div>
       <div className="flex items-center justify-end space-x-4 md:flex-col-reverse">

@@ -1,4 +1,5 @@
 import { getTopCoins } from "@/app/lib/get-top-coins";
+import Link from "next/link";
 import Image from "next/image";
 
 export default function TopCoins({ coins }) {
@@ -19,8 +20,9 @@ export default function TopCoins({ coins }) {
             >
               {gainer_loser.map((coin) => {
                 return (
-                  <div
+                  <Link
                     key={coin.id}
+                    href={`/coins/${coin.id}`}
                     className="grid grid-cols-[40%,_25%,_35%] py-4 px-2 font-medium"
                   >
                     <div className="flex items-start justify-start space-x-2">
@@ -53,9 +55,10 @@ export default function TopCoins({ coins }) {
                       {new Intl.NumberFormat("en-US", {
                         currency: "USD",
                         style: "currency",
+                        maximumFractionDigits: 8,
                       }).format(coin.current_price)}
                     </p>
-                  </div>
+                  </Link>
                 );
               })}
             </div>

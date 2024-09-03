@@ -1,16 +1,8 @@
 "use client";
 import React from "react";
+import { formatter } from "@/app/lib/formatter";
 
 export default function CoinStats({ coin }) {
-  const formatter = (number, style, notation, dec) => {
-    return new Intl.NumberFormat("en-US", {
-      currency: "USD",
-      notation,
-      style,
-      maximumFractionDigits: dec,
-    }).format(number);
-  };
-
   const marketData = [
     { market: "Rank", value: coin.market_cap_rank, format: "compact" },
     {

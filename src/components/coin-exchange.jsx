@@ -4,6 +4,7 @@ import Image from "next/image";
 import Select from "react-select";
 import { CgArrowsExchangeAltV } from "react-icons/cg";
 import { colorStyles } from "@/app/util/select-styles";
+import { formatter } from "@/app/lib/formatter";
 
 export default function CoinExchange({ coins }) {
   const id = useId();
@@ -12,17 +13,11 @@ export default function CoinExchange({ coins }) {
   const [qty, setQty] = useState(0);
   const [amount, setAmount] = useState(0);
 
-  const price = (coin) =>
-    new Intl.NumberFormat("en-US", {
-      currency: "USD",
-      style: "currency",
-    }).format(coin.current_price);
-
   const calculateExchange = (e) => {
     e.preventDefault();
     const sum = Number(firstCoin.current_price) * Number(qty);
     const result = Number(sum) / Number(secondCoin.current_price);
-    setAmount(result.toFixed(2));
+    setAmount(result);
   };
 
   return (
@@ -54,7 +49,12 @@ export default function CoinExchange({ coins }) {
           <div className="flex flex-col items-end space-y-6">
             <p className="w-full text-end text-xs text-neutral-500 uppercase font-medium">{`1 ${
               firstCoin.symbol
-            } = ${price(firstCoin)}`}</p>
+            } = ${formatter(
+              firstCoin.current_price,
+              "currency",
+              "standard",
+              8
+            )}`}</p>
             <form onSubmit={calculateExchange}>
               <input
                 type="number"
@@ -98,11 +98,18 @@ export default function CoinExchange({ coins }) {
           <div className="flex flex-col items-end space-y-6">
             <p className="text-accent text-xs font-medium uppercase">Get</p>
             <p className="w-24 h-9 text-end flex items-center justify-end">
-              {new Intl.NumberFormat("en-US").format(amount)}
+              {new Intl.NumberFormat("en-US", {
+                maximumFractionDigits: 12,
+              }).format(amount)}
             </p>
             <p className="w-full text-end text-xs text-neutral-500 uppercase font-medium">{`1 ${
               secondCoin.symbol
-            } = ${price(secondCoin)}`}</p>
+            } = ${formatter(
+              secondCoin.current_price,
+              "currency",
+              "standard",
+              8
+            )}`}</p>
           </div>
         </div>
       </div>

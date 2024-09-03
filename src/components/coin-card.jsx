@@ -1,7 +1,9 @@
 "use client";
+import Link from "next/link";
 import Image from "next/image";
 import Sparkline from "./sparkline";
 import { useSearchParams } from "next/navigation";
+import { formatter } from "@/app/lib/formatter";
 
 export default function CoinCard({ coin }) {
   const {
@@ -13,7 +15,6 @@ export default function CoinCard({ coin }) {
     market_cap,
     total_volume,
     sparkline_in_7d,
-    price_change_percentage_1h_in_currency,
     price_change_percentage_24h_in_currency,
     price_change_percentage_7d_in_currency,
   } = coin;
@@ -36,7 +37,10 @@ export default function CoinCard({ coin }) {
       : sparkline_in_7d.price.slice(-24);
 
   return (
-    <div className="grid grid-cols-[40%,_25%,_35%] md:grid-cols-[20%,_20%,_15%,_15%,_15%,_15%] py-4 even:bg-md-gray rounded-lg px-2 font-medium">
+    <Link
+      href={`/coins/${id}`}
+      className="grid grid-cols-[40%,_25%,_35%] md:grid-cols-[20%,_20%,_15%,_15%,_15%,_15%] py-4 even:bg-md-gray rounded-lg px-2 font-medium cursor-pointer hover:bg-accent/10"
+    >
       <div className="flex items-start justify-start space-x-2">
         <Image
           priority
@@ -53,10 +57,7 @@ export default function CoinCard({ coin }) {
       </div>
 
       <p className="text-sm text-end self-center col-start-3 md:col-start-2">
-        {new Intl.NumberFormat("en-US", {
-          currency: "USD",
-          style: "currency",
-        }).format(current_price)}
+        {formatter(current_price, "currency", "standard", 8)}
       </p>
 
       <p
@@ -64,23 +65,15 @@ export default function CoinCard({ coin }) {
           change_percentage < 0 ? "text-red-500" : "text-accent"
         } text-sm text-end self-center col-start-2 row-start-1 md:col-start-3`}
       >
-        {change_percentage.toFixed(2)}%
+        {formatter(change_percentage / 100, "percent", "standard", 2)}
       </p>
 
       <p className="hidden md:block text-sm text-end self-center">
-        {new Intl.NumberFormat("en-US", {
-          currency: "USD",
-          style: "currency",
-          notation: "compact",
-        }).format(market_cap)}
+        {formatter(market_cap, "currency", "compact", 2)}
       </p>
 
       <p className="hidden md:block text-sm text-end self-center">
-        {new Intl.NumberFormat("en-US", {
-          currency: "USD",
-          style: "currency",
-          notation: "compact",
-        }).format(total_volume)}
+        {formatter(total_volume, "currency", "compact", 2)}
       </p>
 
       <div className="hidden md:block pl-4">
@@ -89,6 +82,6 @@ export default function CoinCard({ coin }) {
           change_percentage={change_percentage}
         />
       </div>
-    </div>
+    </Link>
   );
 }
