@@ -25,7 +25,7 @@ export default function ExchangeList({ coins }) {
           <Link
             key={coin.id}
             href={`/coins/${coin.id}`}
-            className={`flex items-center justify-between rounded-md p-4 bg-md-gray ${
+            className={`flex items-center justify-between rounded-md p-4 bg-md-gray hover:bg-accent/10 ${
               coin === baseCoin && "hidden"
             }`}
           >
