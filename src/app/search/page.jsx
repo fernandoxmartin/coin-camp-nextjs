@@ -20,7 +20,7 @@ export default async function Search({ searchParams }) {
               <div className="flex items-center justify-center py-6 md:col-span-2 lg:col-span-3">
                 <p>
                   Search results for{" "}
-                  <span className="italic">"{searchParams.q}"</span>
+                  <span className="italic">{`"${searchParams.q}"`}</span>
                 </p>
               </div>
 
@@ -54,7 +54,7 @@ export default async function Search({ searchParams }) {
               <LuFileSearch className="text-5xl text-neutral-400" />
               <h2 className="text-center">
                 Sorry! No results found for{" "}
-                <span className="italic">"{searchParams.q}"</span>
+                <span className="italic">{`"${searchParams.q}"`}</span>
               </h2>
               <p className="text-center text-sm text-neutral-500">
                 You may want to try to search for something else.
