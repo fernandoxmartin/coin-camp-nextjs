@@ -25,11 +25,11 @@ export default function ExchangeList({ coins }) {
           <Link
             key={coin.id}
             href={`/coins/${coin.id}`}
-            className={`flex items-center justify-between rounded-md p-4 bg-md-gray hover:bg-accent/10 ${
+            className={`grid grid-cols-2 gap-2 rounded-md p-4 bg-md-gray hover:bg-accent/10 ${
               coin === baseCoin && "hidden"
             }`}
           >
-            <div className="w-1/2 flex items-start justify-start space-x-4">
+            <div className="w-full flex items-start justify-start space-x-4">
               <Image
                 priority
                 src={coin.image}
@@ -38,14 +38,14 @@ export default function ExchangeList({ coins }) {
                 height="0"
                 className="w-8 h-8 self-center"
               />
-              <div className="w-full text-start space-y-2">
-                <p className="text-sm font-medium truncate">{coin.name}</p>
+              <div className="text-start space-y-2">
+                <p className="text-sm font-medium line-clamp-1">{coin.name}</p>
                 <p className="text-sm uppercase text-neutral-500">
                   {coin.symbol}
                 </p>
               </div>
             </div>
-            <div className="w-1/2 text-end space-y-2">
+            <div className="text-end space-y-2">
               <p className="text-xs text-neutral-500 text-end uppercase font-medium">{`1 ${
                 coin.symbol
               } = ${formatter(
@@ -56,11 +56,16 @@ export default function ExchangeList({ coins }) {
               )}`}</p>
               <div className="flex items-center justify-end space-x-2">
                 <p className="text-xs text-accent">Qty</p>
-                <p className=" font-medium">
-                  {new Intl.NumberFormat("en-US", {
-                    maximumFractionDigits: 10,
-                  }).format(amount)}
-                </p>
+
+                {amount > 1 ? (
+                  <p className="font-medium">
+                    {formatter(amount, "decimal", "compact", 2)}
+                  </p>
+                ) : (
+                  <p className="font-medium">
+                    {formatter(amount, "decimal", "standard", 8)}
+                  </p>
+                )}
               </div>
             </div>
           </Link>

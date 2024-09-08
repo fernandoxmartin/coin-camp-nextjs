@@ -3,6 +3,11 @@ import CoinList from "@/components/coin-list";
 import TopCoins from "@/components/top-coins";
 import CoinExchange from "@/components/coin-exchange";
 import { getCoins } from "@/app/lib/get-coins";
+import { Suspense } from "react";
+import {
+  CoinListSkeleton,
+  SideSkeleton,
+} from "@/components/skeletons/coins-skeleton";
 
 export default async function Home({ searchParams }) {
   const { timeframe, sort } = searchParams;
@@ -15,10 +20,16 @@ export default async function Home({ searchParams }) {
       </div>
 
       <div className="lg:grid lg:grid-cols-[65%,_35%]">
-        <CoinList coins={coins} />
+        <Suspense fallback={<CoinListSkeleton />}>
+          <CoinList coins={coins} />
+        </Suspense>
         <div className="md:flex md:space-x-6 lg:flex-col lg:items-center lg:py-16 lg:pl-8 xl:pl-16 lg:space-x-0 lg:space-y-6">
-          <TopCoins coins={coins} />
-          <CoinExchange coins={coins} />
+          <Suspense fallback={<SideSkeleton />}>
+            <TopCoins coins={coins} />
+          </Suspense>
+          <Suspense fallback={<SideSkeleton />}>
+            <CoinExchange coins={coins} />
+          </Suspense>
         </div>
       </div>
     </div>

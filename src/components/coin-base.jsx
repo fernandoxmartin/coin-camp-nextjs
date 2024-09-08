@@ -31,7 +31,7 @@ export default function CoinBase({ coins }) {
         )}`}</p>
       </div>
       <div className="flex items-center justify-end space-x-4 md:flex-col-reverse">
-        <p className="w-full text-end text-xs text-neutral-500 uppercase font-medium md:pt-4">
+        <p className="w-full text-end text-xs text-neutral-500 font-medium md:pt-4">
           Qty
         </p>
         <form onSubmit={handleSubmit}>
@@ -39,6 +39,7 @@ export default function CoinBase({ coins }) {
             type="number"
             step="any"
             min="0"
+            max="999999"
             name="qty"
             className="w-20 h-12 p-2 text-end rounded-md border border-neutral-600 bg-lt-gray placeholder:text-neutral-500 outline-none"
             placeholder={qty}

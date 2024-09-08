@@ -7,7 +7,7 @@ import NavbarSettings from "./navbar-settings";
 import { useNavContext } from "@/contexts/nav-context";
 
 export default function NavbarMobile() {
-  const { open } = useNavContext();
+  const { open, setOpen } = useNavContext();
 
   return (
     <div
@@ -15,16 +15,28 @@ export default function NavbarMobile() {
         open ? "translate-x-[0%]" : "translate-x-[-100%]"
       } z-10`}
     >
-      <div className="flex flex-col space-y-6 inter uppercase font-medium text-lg pt-16">
-        <Link href="/" className="flex items-center space-x-6">
+      <div className="flex flex-col space-y-6 inter capitalize text-lg tracking-wide pt-16">
+        <Link
+          onClick={() => setOpen(false)}
+          href="/"
+          className="flex items-center space-x-6"
+        >
           <ImCoinDollar size={28} />
           <p>Coins</p>
         </Link>
-        <Link href="/exchange" className="flex items-center space-x-6">
+        <Link
+          onClick={() => setOpen(false)}
+          href="/exchange"
+          className="flex items-center space-x-6"
+        >
           <PiSwapBold size={28} />
           <p>Exchange</p>
         </Link>
-        <Link href="/news" className="flex items-center space-x-6">
+        <Link
+          onClick={() => setOpen(false)}
+          href="/news"
+          className="flex items-center space-x-6"
+        >
           <BiNews size={28} />
           <p>News</p>
         </Link>

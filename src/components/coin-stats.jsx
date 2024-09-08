@@ -43,7 +43,7 @@ export default function CoinStats({ coin }) {
       time: "All Time Low",
       date: coin.market_data.atl_date.usd.slice(0, 10),
       value: coin.market_data.atl.usd,
-      format: { style: "currency", notation: "standard", dec: 11 },
+      format: { style: "currency", notation: "standard", dec: 10 },
     },
     {
       time: "ATL Change",
